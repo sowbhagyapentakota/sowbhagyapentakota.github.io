@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sowbhagya P — VP Product | Transaction Banking & Fintech</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F5F0E8;
+    --warm-white: #FAF7F2;
+    --sand: #E8DFC8;
+    --clay: #C4A882;
+    --terracotta: #B5714A;
+    --bark: #7D5C3A;
+    --deep-bark: #3E2C1A;
+    --moss: #6B7C5A;
+    --sage: #9DAE88;
+    --muted: #8C7B6A;
+    --text: #2A1F14;
+    --text-light: #6B5C4A;
+    --accent-gold: #C9A84C;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(245,240,232,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--sand);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 60px;
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--deep-bark);
+    letter-spacing: 0.01em;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    text-decoration: none;
+    color: var(--text-light);
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--terracotta); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 60px;
+    overflow: hidden;
+    position: relative;
+  }
+  .hero-left {
+    padding: 8rem 4rem 6rem 6rem;
+    display: flex; flex-direction: column; justify-content: center;
+    position: relative; z-index: 1;
+  }
+  .hero-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    border: 1px solid var(--terracotta);
+    border-radius: 20px;
+    padding: 4px 14px;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.2s forwards;
+  }
+  .hero-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 5vw, 4.5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--deep-bark);
+    margin-bottom: 0.5rem;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.35s forwards;
+  }
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1rem, 2vw, 1.4rem);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--terracotta);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.5s forwards;
+  }
+  .hero-summary {
+    font-size: 1rem;
+    color: var(--text-light);
+    max-width: 480px;
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.65s forwards;
+  }
+  .hero-cta {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.8s forwards;
+  }
+  .btn-primary {
+    display: inline-block;
+    background: var(--terracotta);
+    color: #fff;
+    padding: 0.75rem 2rem;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { background: var(--bark); transform: translateY(-2px); }
+  .btn-outline {
+    display: inline-block;
+    border: 1.5px solid var(--clay);
+    color: var(--bark);
+    padding: 0.75rem 2rem;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    transition: all 0.2s;
+  }
+  .btn-outline:hover { background: var(--sand); transform: translateY(-2px); }
+  .hero-right {
+    background: var(--warm-white);
+    border-left: 1px solid var(--sand);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8rem 5rem 6rem 5rem;
+    gap: 1.5rem;
+    position: relative;
+  }
+  .hero-right::before {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0; right: 0;
+    width: 6px;
+    background: linear-gradient(to bottom, var(--terracotta), var(--moss));
+  }
+  .stat-item {
+    border-left: 3px solid var(--clay);
+    padding-left: 1.25rem;
+    opacity: 0;
+    animation: fadeUp 0.5s forwards;
+  }
+  .stat-item:nth-child(1) { animation-delay: 0.4s; }
+  .stat-item:nth-child(2) { animation-delay: 0.55s; }
+  .stat-item:nth-child(3) { animation-delay: 0.7s; }
+  .stat-item:nth-child(4) { animation-delay: 0.85s; }
+  .stat-item:nth-child(5) { animation-delay: 1s; }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--terracotta);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    margin-top: 2px;
+  }
+
+  /* SECTION BASE */
+  section { padding: 6rem 0; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 2.5rem; }
+  .section-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 700;
+    color: var(--deep-bark);
+    line-height: 1.2;
+    margin-bottom: 3rem;
+  }
+
+  /* EXPERTISE */
+  #expertise { background: var(--warm-white); }
+  .expertise-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+  }
+  .expertise-card {
+    background: var(--cream);
+    border: 1px solid var(--sand);
+    border-radius: 12px;
+    padding: 1.75rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .expertise-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(62,44,26,0.08); }
+  .exp-icon {
+    width: 44px; height: 44px; border-radius: 10px;
+    background: var(--sand); display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+  }
+  .exp-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--deep-bark);
+    margin-bottom: 0.5rem;
+  }
+  .exp-desc { font-size: 0.88rem; color: var(--text-light); line-height: 1.65; }
+  .exp-tags { margin-top: 0.75rem; display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag {
+    font-size: 0.72rem;
+    background: var(--sand);
+    color: var(--bark);
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+
+  /* CASE STUDIES */
+  #work { background: var(--cream); }
+  .case-studies { display: flex; flex-direction: column; gap: 4rem; }
+  .case-study {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 3rem;
+    padding: 3rem;
+    background: var(--warm-white);
+    border: 1px solid var(--sand);
+    border-radius: 16px;
+    position: relative;
+    overflow: hidden;
+  }
+  .case-study::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    width: 5px;
+    border-radius: 16px 0 0 16px;
+  }
+  .case-study.clay::before { background: var(--terracotta); }
+  .case-study.moss::before { background: var(--moss); }
+  .case-study.gold::before { background: var(--accent-gold); }
+  .case-study.bark::before { background: var(--bark); }
+  .case-study.sage::before { background: var(--sage); }
+  .cs-left { display: flex; flex-direction: column; }
+  .cs-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--sand);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  .cs-product {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+  }
+  .cs-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--deep-bark);
+    line-height: 1.3;
+    margin-bottom: 1rem;
+  }
+  .cs-role {
+    font-size: 0.8rem;
+    color: var(--muted);
+    border-top: 1px solid var(--sand);
+    padding-top: 0.75rem;
+    margin-top: auto;
+  }
+  .cs-right {}
+  .cs-challenge {
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.4rem;
+  }
+  .cs-desc { font-size: 0.95rem; color: var(--text-light); margin-bottom: 1.5rem; line-height: 1.75; }
+  .cs-outcomes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1rem;
+  }
+  .outcome-box {
+    background: var(--cream);
+    border: 1px solid var(--sand);
+    border-radius: 10px;
+    padding: 1rem;
+    text-align: center;
+  }
+  .outcome-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--terracotta);
+  }
+  .outcome-label { font-size: 0.78rem; color: var(--text-light); margin-top: 2px; }
+
+  /* EXPERIENCE TIMELINE */
+  #experience { background: var(--warm-white); }
+  .timeline { position: relative; padding-left: 2rem; }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 8px; bottom: 0;
+    width: 2px;
+    background: var(--sand);
+  }
+  .timeline-item { position: relative; padding-bottom: 3rem; }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -2rem; top: 8px;
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: var(--terracotta);
+    border: 2px solid var(--cream);
+    transform: translateX(-5px);
+  }
+  .t-period { font-size: 0.78rem; color: var(--muted); font-weight: 500; margin-bottom: 0.3rem; }
+  .t-role {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--deep-bark);
+    margin-bottom: 0.2rem;
+  }
+  .t-company { font-size: 0.88rem; color: var(--terracotta); font-weight: 500; margin-bottom: 0.75rem; }
+  .t-points { list-style: none; padding: 0; }
+  .t-points li {
+    font-size: 0.88rem;
+    color: var(--text-light);
+    padding: 0.3rem 0;
+    padding-left: 1rem;
+    position: relative;
+    line-height: 1.6;
+  }
+  .t-points li::before { content: '→'; position: absolute; left: 0; color: var(--clay); }
+
+  /* CREDENTIALS */
+  #credentials { background: var(--cream); }
+  .creds-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+  .cred-section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--deep-bark);
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--sand);
+  }
+  .cred-item { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.25rem; }
+  .cred-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--terracotta); margin-top: 7px; flex-shrink: 0;
+  }
+  .cred-name { font-size: 0.9rem; font-weight: 500; color: var(--deep-bark); }
+  .cred-sub { font-size: 0.8rem; color: var(--muted); }
+
+  /* CONTACT */
+  #contact {
+    background: var(--deep-bark);
+    color: var(--cream);
+    padding: 6rem 0;
+    position: relative;
+    overflow: hidden;
+  }
+  #contact::before {
+    content: 'SP';
+    font-family: 'Playfair Display', serif;
+    font-size: 18rem;
+    font-weight: 700;
+    position: absolute;
+    right: -2rem; bottom: -4rem;
+    color: rgba(255,255,255,0.03);
+    line-height: 1;
+    pointer-events: none;
+  }
+  #contact .section-label { color: var(--clay); }
+  #contact .section-title { color: var(--cream); margin-bottom: 1rem; }
+  .contact-sub { font-size: 1rem; color: var(--clay); max-width: 480px; margin-bottom: 3rem; }
+  .contact-links { display: flex; gap: 1.25rem; flex-wrap: wrap; }
+  .contact-link {
+    display: inline-flex; align-items: center; gap: 8px;
+    text-decoration: none;
+    color: var(--cream);
+    font-size: 0.9rem;
+    font-weight: 500;
+    border: 1px solid rgba(196,168,130,0.35);
+    border-radius: 30px;
+    padding: 0.65rem 1.5rem;
+    transition: all 0.2s;
+    letter-spacing: 0.02em;
+  }
+  .contact-link:hover {
+    background: rgba(196,168,130,0.12);
+    border-color: var(--clay);
+    transform: translateY(-2px);
+  }
+  .contact-link svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+  /* FOOTER */
+  footer {
+    background: #2A1A0C;
+    color: var(--muted);
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .reveal {
+    opacity: 0; transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-left { padding: 6rem 2rem 3rem; }
+    .hero-right { padding: 3rem 2rem; border-left: none; border-top: 1px solid var(--sand); }
+    .hero-right::before { display: none; }
+    .case-study { grid-template-columns: 1fr; gap: 1.5rem; }
+    .creds-grid { grid-template-columns: 1fr; }
+    nav { padding: 0 1rem; }
+    .nav-links { gap: 1rem; }
+  }
+  @media (max-width: 600px) {
+    .hero-left { padding: 5rem 1.5rem 2rem; }
+    .hero-right { padding: 2rem 1.5rem; }
+    .container { padding: 0 1.5rem; }
+    section { padding: 4rem 0; }
+    .expertise-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Sowbhagya P.</div>
+  <ul class="nav-links">
+    <li><a href="#expertise">Expertise</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#credentials">Credentials</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <span class="hero-tag">VP Product · Transaction Banking · Fintech</span>
+    <h1 class="hero-name">Sowbhagya P.</h1>
+    <p class="hero-title">Building the rails of India's digital payments economy</p>
+    <p class="hero-summary">
+      Strategic product leader with 7+ years architecting enterprise-grade collections, payments, and API banking platforms. From Payment Aggregator integrations to virtual accounts — I own the full product lifecycle, from API solutioning to merchant go-live.
+    </p>
+    <div class="hero-cta">
+      <a href="#work" class="btn-primary">View Case Studies</a>
+      <a href="#contact" class="btn-outline">Get in Touch</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="stat-item">
+      <div class="stat-num">7+</div>
+      <div class="stat-label">Years in Digital Payments & Collections</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">₹100Cr+</div>
+      <div class="stat-label">₹2,500+ Cr monthly collections throughput</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">10</div>
+      <div class="stat-label">Product modules shipped at YES Bank</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">5</div>
+      <div class="stat-label">New verticals: TASC, Govt., eCommerce, Education, FIs</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">IIM</div>
+      <div class="stat-label">PGDM · Raipur + PMP · SAFe Certified</div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERTISE -->
+<section id="expertise">
+  <div class="container">
+    <div class="section-label reveal">Core Expertise</div>
+    <h2 class="section-title reveal">What I build &amp; lead</h2>
+    <div class="expertise-grid">
+      <div class="expertise-card reveal">
+        <div class="exp-icon">🏦</div>
+        <div class="exp-title">Collections Infrastructure</div>
+        <div class="exp-desc">End-to-end product ownership of NACH, e-Collect, BBPS, and mandate management platforms at enterprise scale.</div>
+        <div class="exp-tags"><span class="tag">NACH</span><span class="tag">BBPS</span><span class="tag">PFMS</span><span class="tag">e-Collect</span></div>
+      </div>
+      <div class="expertise-card reveal">
+        <div class="exp-icon">🔗</div>
+        <div class="exp-title">API Banking & BaaS</div>
+        <div class="exp-desc">Designed embedded banking frameworks enabling fintechs and enterprises to integrate banking services via APIs.</div>
+        <div class="exp-tags"><span class="tag">API Banking</span><span class="tag">BaaS</span><span class="tag">Virtual Accounts</span></div>
+      </div>
+      <div class="expertise-card reveal">
+        <div class="exp-icon">💸</div>
+        <div class="exp-title">UPI & Real-Time Payments</div>
+        <div class="exp-desc">Product strategy across UPI merchant onboarding, payment gateway integrations, and dispute resolution flows.</div>
+        <div class="exp-tags"><span class="tag">UPI</span><span class="tag">NPCI</span><span class="tag">Payment Gateway</span></div>
+      </div>
+      <div class="expertise-card reveal">
+        <div class="exp-icon">🏢</div>
+        <div class="exp-title">Enterprise & Government</div>
+        <div class="exp-desc">PFMS integrations, government collection mandates, and large-enterprise deployment of transaction banking products.</div>
+        <div class="exp-tags"><span class="tag">PFMS</span><span class="tag">Govt. Banking</span><span class="tag">B2B</span></div>
+      </div>
+      <div class="expertise-card reveal">
+        <div class="exp-icon">🚀</div>
+        <div class="exp-title">Strategic Product Management</div>
+        <div class="exp-desc">GTM strategy, competitive benchmarking, cross-functional alignment, and regulatory engagement across RBI, NPCI ecosystems.</div>
+        <div class="exp-tags"><span class="tag">PMP</span><span class="tag">SAFe</span><span class="tag">Agile</span></div>
+      </div>
+      <div class="expertise-card reveal">
+        <div class="exp-icon">📊</div>
+        <div class="exp-title">Revenue & P&amp;L Ownership</div>
+        <div class="exp-desc">Business case development, pricing models, and product-level P&L management for collections and payments verticals.</div>
+        <div class="exp-tags"><span class="tag">P&L</span><span class="tag">Pricing</span><span class="tag">Business Cases</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDIES -->
+<section id="work">
+  <div class="container">
+    <div class="section-label reveal">Product Case Studies</div>
+    <h2 class="section-title reveal">Selected work</h2>
+    <div class="case-studies">
+
+      <!-- CS 1: YES SMARTPAY -->
+      <div class="case-study clay reveal">
+        <div class="cs-left">
+          <div class="cs-number">01</div>
+          <div class="cs-product">Collections Platform · Payment Aggregator Integrations</div>
+          <div class="cs-title">YES SMARTPAY Collections Strategy &amp; PA Integrations</div>
+          <div class="cs-role">VP Product · YES Bank · FY25–26</div>
+        </div>
+        <div class="cs-right">
+          <div class="cs-challenge">The Challenge</div>
+          <div class="cs-desc">
+            YES Bank's collections suite was fragmented across 10+ product modules with no unified merchant experience and underserved verticals (TASC, Government Business, eCommerce, Education &amp; Healthcare, Financial Institutions). I designed the YES SMARTPAY platform roadmap — and personally orchestrated and managed <strong>6+ end-to-end Payment Aggregator integrations</strong> with the collections platform. Each integration covered the full API lifecycle: PG onboarding, transaction request flows, transaction status webhooks, third-party validations, and settlement APIs — delivered across both mobile-responsive and iframe embed modes.
+          </div>
+          <div class="cs-outcomes">
+            <div class="outcome-box"><div class="outcome-num">6+</div><div class="outcome-label">Payment Aggregator integrations</div></div>
+            <div class="outcome-box"><div class="outcome-num">5</div><div class="outcome-label">API integration layers per PG</div></div>
+            <div class="outcome-box"><div class="outcome-num">2</div><div class="outcome-label">Delivery modes: Mobile + iFrame</div></div>
+            <div class="outcome-box"><div class="outcome-num">10</div><div class="outcome-label">Product modules unified</div></div>
+          </div>
+          <div style="margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid var(--sand);">
+            <div class="cs-challenge" style="margin-bottom: 0.6rem;">API Integration Scope</div>
+            <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+              <span class="tag">PG Onboarding</span>
+              <span class="tag">Transaction Request API</span>
+              <span class="tag">Status Webhooks</span>
+              <span class="tag">Third-party Validations</span>
+              <span class="tag">Settlement APIs</span>
+              <span class="tag">Mobile Responsive</span>
+              <span class="tag">iFrame Embed</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CS 2: e-Collect / Virtual Accounts -->
+      <div class="case-study moss reveal">
+        <div class="cs-left">
+          <div class="cs-number">02</div>
+          <div class="cs-product">API Banking · Collections</div>
+          <div class="cs-title">e-Collect &amp; Virtual Account Platform</div>
+          <div class="cs-role">VP Product · YES Bank</div>
+        </div>
+        <div class="cs-right">
+          <div class="cs-challenge">The Challenge</div>
+          <div class="cs-desc">
+            Enterprise clients needed automated, real-time reconciliation of inbound payments at scale. I led the product development of the Virtual Account and e-Collect infrastructure — enabling clients to issue unique virtual accounts per payer, automate payment matching, and power downstream ERP reconciliation via webhooks and API callbacks.
+          </div>
+          <div class="cs-outcomes">
+            <div class="outcome-box"><div class="outcome-num">Real-time</div><div class="outcome-label">Auto-reconciliation</div></div>
+            <div class="outcome-box"><div class="outcome-num">Multi-mode</div><div class="outcome-label">NEFT/RTGS/UPI/IMPS</div></div>
+            <div class="outcome-box"><div class="outcome-num">ERP-ready</div><div class="outcome-label">API + webhook integration</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CS 3: NACH -->
+      <div class="case-study gold reveal">
+        <div class="cs-left">
+          <div class="cs-number">03</div>
+          <div class="cs-product">NACH · Mandate Management</div>
+          <div class="cs-title">NACH &amp; Recurring Debit Infrastructure</div>
+          <div class="cs-role">VP Product · YES Bank</div>
+        </div>
+        <div class="cs-right">
+          <div class="cs-challenge">The Challenge</div>
+          <div class="cs-desc">
+            Scaling NACH mandate registration and execution for lending, insurance, and subscription businesses while staying ahead of NPCI mandate reforms including e-NACH and API-based mandate registration. I owned the product roadmap, SLA governance, and regulatory alignment — driving both volume growth and client retention through improved success rates and failure management workflows.
+          </div>
+          <div class="cs-outcomes">
+            <div class="outcome-box"><div class="outcome-num">e-NACH</div><div class="outcome-label">API mandate rollout</div></div>
+            <div class="outcome-box"><div class="outcome-num">↑ SLA</div><div class="outcome-label">Improved success rates</div></div>
+            <div class="outcome-box"><div class="outcome-num">Lending+</div><div class="outcome-label">NBFCs, Insurance, SaaS</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CS 4: YES Connect -->
+      <div class="case-study bark reveal">
+        <div class="cs-left">
+          <div class="cs-number">04</div>
+          <div class="cs-product">API Banking Gateway</div>
+          <div class="cs-title">YES Connect — API Banking Platform</div>
+          <div class="cs-role">VP Product · YES Bank</div>
+        </div>
+        <div class="cs-right">
+          <div class="cs-challenge">The Challenge</div>
+          <div class="cs-desc">
+            Fintechs and enterprises needed a single API gateway to access YES Bank's full suite of transaction banking services — payments, collections, and account services. I defined the product scope, API architecture principles, and bespoke integration playbook for YES Connect. All integrations are managed under a tailored, client-specific engagement model — with dedicated technical solutioning, API certification, and go-live support for each partner. Security is enforced through <strong>2FA via IAM App</strong>, ensuring authenticated, auditable access across all integrated clients.
+          </div>
+          <div class="cs-outcomes">
+            <div class="outcome-box"><div class="outcome-num">1 API</div><div class="outcome-label">Unified gateway</div></div>
+            <div class="outcome-box"><div class="outcome-num">Bespoke</div><div class="outcome-label">Custom integration model</div></div>
+            <div class="outcome-box"><div class="outcome-num">End-to-end</div><div class="outcome-label">Tech solutioning to go-live</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CS 5: Connected Banking -->
+      <div class="case-study sage reveal">
+        <div class="cs-left">
+          <div class="cs-number">05</div>
+          <div class="cs-product">BaaS · Embedded Finance</div>
+          <div class="cs-title">Connected Banking Framework</div>
+          <div class="cs-role">VP Product · YES Bank</div>
+        </div>
+        <div class="cs-right">
+          <div class="cs-challenge">The Challenge</div>
+          <div class="cs-desc">
+            As Banking-as-a-Service emerged as a strategic imperative, I architected the Connected Banking framework — enabling non-banking platforms (ERP, HRMS, eCommerce) to embed banking capabilities natively. This included defining partner tiers, data-sharing contracts, compliance guardrails, and the API product catalogue for embedded payments, payouts, and collections.
+          </div>
+          <div class="cs-outcomes">
+            <div class="outcome-box"><div class="outcome-num">BaaS</div><div class="outcome-label">Embedded banking</div></div>
+            <div class="outcome-box"><div class="outcome-num">ERP+</div><div class="outcome-label">ERP / HRMS / eComm</div></div>
+            <div class="outcome-box"><div class="outcome-num">Compliance</div><div class="outcome-label">RBI-aligned framework</div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="section-label reveal">Career Timeline</div>
+    <h2 class="section-title reveal">Experience</h2>
+    <div class="timeline">
+
+      <div class="timeline-item reveal">
+        <div class="t-period">May 2024 — Present</div>
+        <div class="t-role">Vice President, Product Management (TBG)</div>
+        <div class="t-company">YES Bank · Mumbai</div>
+        <ul class="t-points">
+          <li>Own business and product strategy for the bank's digital collections and liquidity enablement portfolio — scaling transaction value to ₹2,500+ Cr and 600K+ monthly transactions</li>
+          <li>Consolidated UPI, NACH, e-Collect, PG, and PoS into a single scalable offering enabling cross-sell across lending, cash management, and liquidity solutions</li>
+          <li>Orchestrated and maintained PPAC Note across Risk, Compliance, Legal, AML, Audit, Vendors and Finance for market readiness and regulatory alignment</li>
+          <li>Led cross-functional delivery across tech, ops, sales, and external partners; authored BRDs, FSDs, concept notes; owned UAT and go-live readiness</li>
+          <li>Regularly present product strategy, performance metrics, and transformation updates to senior management and Board forums</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="t-period">Sep 2022 — Aug 2023</div>
+        <div class="t-role">Vice President, Product Management (TBG)</div>
+        <div class="t-company">YES Bank · Mumbai</div>
+        <ul class="t-points">
+          <li>Held end-to-end product ownership for YES Connect — the bank's flagship banking + beyond-banking platform covering UPI, NACH, e-Collect, PG, POS, Escrow, Corporate Net Banking, Trade on Net</li>
+          <li>Led strategic partnership alliances with SaaS, BaaS, and niche ecosystem players to expand non-banking value propositions</li>
+          <li>Drove segment-led solutioning — designing industry-specific banking propositions aligned to sector cash flows, operating models, and liquidity needs</li>
+          <li>Managed product roadmap and technical backlog in JIRA; coordinated large-scale GTM rollouts across sales, product, ops, and partner teams</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="t-period">Mar 2021 — Sep 2022</div>
+        <div class="t-role">Assistant Vice President, Product Management (TBG)</div>
+        <div class="t-company">YES Bank · Mumbai</div>
+        <ul class="t-points">
+          <li>Owned program management for TASC and Government Banking segments across UPI, NACH, e-Collect, PG, PoS, Escrow, Corporate Net Banking, BBPS, PFMS</li>
+          <li>Led complex stakeholder orchestration across CMS Product, LPM, MCC, Digital Banking, Implementation, Connected Banking Partners, and Business Development teams</li>
+          <li>Executed the TASC program achieving ₹2,000 Cr AMB through data-driven campaigns and structured governance frameworks</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="t-period">Aug 2023 — Mar 2024</div>
+        <div class="t-role">Executive Director (Business)</div>
+        <div class="t-company">Global Infocloud · Pune</div>
+        <ul class="t-points">
+          <li>Led a 50-member cross-functional team delivering ERP, Web, Mobile Application, and Digital Marketing solutions across Indian, African, and Canadian markets</li>
+          <li>Conducted market research and strategic planning to define OKRs; managed talent hiring, training, and delivery governance</li>
+          <li>Drove market expansion, client consulting, and GTM execution for international clients</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="t-period">Feb 2019 — Jul 2020</div>
+        <div class="t-role">Management Manager 1, Relationship Manager (GBG)</div>
+        <div class="t-company">ICICI Bank · Hyderabad</div>
+        <ul class="t-points">
+          <li>Managed institutional portfolios with CASA balances of ₹1,000 Cr; coordinated complex transaction banking solutions for high-value clients</li>
+          <li>Delivered solutions across UPI, NACH, PG, PoS, Escrow, Corporate Net Banking, BBPS, and PFMS</li>
+          <li>Recognised as Top Performing Relationship Manager, Institution Business (May 2020)</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="t-period">Apr 2018 — Jan 2019</div>
+        <div class="t-role">TINI Consultant — Swasth Bharat Prerak</div>
+        <div class="t-company">Tata Trust &amp; Ministry of Women &amp; Child Welfare · Vizianagaram</div>
+        <ul class="t-points">
+          <li>Consultant to District Magistrate; led district-level program execution for NITI Aayog training 5,000+ workers across 30 block divisions</li>
+          <li>Won 3 National Awards for project excellence during Poshan Maah</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CREDENTIALS -->
+<section id="credentials">
+  <div class="container">
+    <div class="section-label reveal">Credentials</div>
+    <h2 class="section-title reveal">Education, Certifications &amp; Awards</h2>
+    <div class="creds-grid">
+      <div class="reveal">
+        <div class="cred-section-title">Education</div>
+        <div class="cred-item">
+          <div class="cred-dot"></div>
+          <div>
+            <div class="cred-name">Post Graduate Program (PGP) in Management</div>
+            <div class="cred-sub">Indian Institute of Management (IIM) Raipur · 2016–2018</div>
+          </div>
+        </div>
+        <div class="cred-item">
+          <div class="cred-dot"></div>
+          <div>
+            <div class="cred-name">Bachelor of Engineering — Metallurgy (STEM)</div>
+            <div class="cred-sub">Andhra University College · 2011–2015 · Visakhapatnam</div>
+          </div>
+        </div>
+
+        <div class="cred-section-title" style="margin-top: 2rem;">Awards &amp; Recognition</div>
+        <div class="cred-item">
+          <div class="cred-dot"></div>
+          <div>
+            <div class="cred-name">Exceptional Performance — SmartPay TBG Strategic Project R&amp;R</div>
+            <div class="cred-sub">YES Bank · Dec 2024</div>
+          </div>
+        </div>
+        <div class="cred-item">
+          <div class="cred-dot"></div>
+          <div>
+            <div class="cred-name">Best CMS Deal of the Year (FY22)</div>
+            <div class="cred-sub">YES Bank · May 2022</div>
+          </div>
+        </div>
+        <div class="cred-item">
+          <div class="cred-dot"></div>
+          <div>
+            <div class="cred-name">Top Performing Relationship Manager — Institution Business</div>
+            <div class="cred-sub">ICICI Bank · May 2020</div>
+          </div>
+        </div>
+        <div class="cred-item">
+          <div class="cred-dot"></div>
+          <div>
+            <div class="cred-name">Star Prerak — Poshan Maah (3 National Awards)</div>
+            <div class="cred-sub">Tata Trust &amp; Ministry of Women &amp; Child Welfare · Aug 2018</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <div class="cred-section-title">Certifications</div>
+        <div class="cred-item">
+          <div class="cred-dot"></div>
+          <div>
+            <div class="cred-name">Certified SAFe Agilist (SA)</div>
+            <div class="cred-sub">Scaled Agile Inc.</div>
+          </div>
+        </div>
+        <div class="cred-item">
+          <div class="cred-dot"></div>
+          <div>
+            <div class="cred-name">Lean Six Sigma — Green Belt (Certified)</div>
+            <div class="cred-sub">Process Excellence</div>
+          </div>
+        </div>
+        <div class="cred-item">
+          <div class="cred-dot"></div>
+          <div>
+            <div class="cred-name">PMP® Training Completed</div>
+            <div class="cred-sub">Project Management Institute (PMI)</div>
+          </div>
+        </div>
+        <div class="cred-item">
+          <div class="cred-dot"></div>
+          <div>
+            <div class="cred-name">Data Science Practitioner</div>
+            <div class="cred-sub">ICICI Bank</div>
+          </div>
+        </div>
+        <div class="cred-item">
+          <div class="cred-dot"></div>
+          <div>
+            <div class="cred-name">Google Adwords Fundamentals &amp; Digital Marketing</div>
+            <div class="cred-sub">Google · Udemy</div>
+          </div>
+        </div>
+
+        <div class="cred-section-title" style="margin-top: 2rem;">Key Tools</div>
+        <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-top: 0.5rem;">
+          <span class="tag">Jira</span><span class="tag">Figma</span><span class="tag">Tableau</span>
+          <span class="tag">SQL</span><span class="tag">Hadoop</span><span class="tag">Adobe Analytics</span>
+          <span class="tag">Google Analytics</span><span class="tag">Google Studio</span>
+          <span class="tag">Microsoft Office</span><span class="tag">Canva</span>
+          <span class="tag">Copilot</span><span class="tag">ChatGPT</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="section-label">Open to Opportunities</div>
+    <h2 class="section-title">Let's connect</h2>
+    <p class="contact-sub">
+      Exploring VP/Head of Product roles in fintech, BaaS, transaction banking, and cross-border payments. Open to remote-first or hybrid positions globally.
+    </p>
+    <div class="contact-links">
+      <a href="https://www.linkedin.com/in/sowbhagya-pentakota/" class="contact-link" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+      <a href="mailto:sowbhagyapentakota@gmail.com" class="contact-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Email Me
+      </a>
+      <a href="https://iimjobs.com" class="contact-link" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+        IIMJobs Profile
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2025 Sowbhagya P. · VP Product · Transaction Banking &amp; Fintech
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
